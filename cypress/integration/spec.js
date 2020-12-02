@@ -8,6 +8,7 @@ const passOnLast = () => {
     // even if this version of Cypress does not have it
     const attempt = Cypress._.get(cy.state('runnable'), '_currentRetry', 0)
     const attempts = Cypress._.get(cy.state('runnable'), '_retries', 0)
+    debugger
 
     if (attempt === attempts) {
       cy.log('Last attempt!')
@@ -34,5 +35,16 @@ describe('repeat and retry', () => {
   it('using custom command', () => {
     cy.browse()
     passOnLast()
+  })
+
+  // disable retries in this test but repeat this test again and again
+  Cypress._.times(100, (k) => {
+    it(`finds and types ${k + 1} of 100`, { retries: 0 }, () => {
+      cy.visit('/commands/actions')
+      cy.get('.action-email')
+        .should('be.enabled')
+        .type('fake@email.com')
+        .should('have.value', 'fake@email.com')
+    })
   })
 })
