@@ -1,6 +1,6 @@
 {
   "retries": {
-    "runMode": 100,
+    "runMode": 10,
     "openMode": 10
   },
   "fixturesFolder": false,
