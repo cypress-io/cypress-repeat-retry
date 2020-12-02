@@ -6,14 +6,14 @@ const passOnLast = () => {
   cy.wait(100).then(() => {
     // safely access the retry
     // even if this version of Cypress does not have it
-    const retry = Cypress._.get(cy.state('runnable'), '_currentRetry', 1)
-    const retries = Cypress._.get(cy.state('runnable'), '_retries', 1)
+    const attempt = Cypress._.get(cy.state('runnable'), '_currentRetry', 0)
+    const attempts = Cypress._.get(cy.state('runnable'), '_retries', 0)
 
-    if (retry === retries) {
-      cy.log('Last retry!')
+    if (attempt === attempts) {
+      cy.log('Last attempt!')
       expect(true).to.be.true
     } else {
-      cy.log(`retry ${retry} of ${retries}`)
+      cy.log(`attempt ${attempt + 1} of ${attempts + 1}`)
         .then(() => {
           expect(true).to.be.false
         })
