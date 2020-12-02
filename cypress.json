@@ -1,0 +1,9 @@
+{
+  "retries": {
+    "runMode": 100,
+    "openMode": 10
+  },
+  "fixturesFolder": false,
+  "pluginsFile": false,
+  "baseUrl": "https://example.cypress.io"
+}
