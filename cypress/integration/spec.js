@@ -23,6 +23,15 @@ const passOnLast = () => {
 }
 
 describe('repeat and retry', () => {
+  context('types into input element that is created after a delay', () => {
+    Cypress._.times(100, (k) => {
+      it(`${k + 1} / 100`, { baseUrl: null }, () => {
+        cy.visit('index.html')
+        cy.get('#enter-text').type('hello').should('have.value', 'hello')
+      })
+    })
+  })
+
   it('passes on the last', () => {
     passOnLast()
   })

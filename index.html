@@ -1,0 +1,14 @@
+<body>
+  <h1>Dynamic input</h1>
+  <div id="app"></div>
+  <script>
+    const insertInput = () => {
+      const app = document.getElementById('app')
+      const input = document.createElement('input')
+      input.type = 'text'
+      input.id = 'enter-text'
+      app.appendChild(input)
+    }
+    setTimeout(insertInput, 200)
+  </script>
+</body>
